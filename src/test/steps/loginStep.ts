@@ -1,220 +1,113 @@
-// 1) Scenario: Navigation to the login page 
+
   
 import { Given, When, Then } from "@cucumber/cucumber"; 
+import { Browser, Page,  chromium,  expect } from '@playwright/test';
 
-         Given('user navigates to the application home page', async function () {
-           
-         });
 
+
+
+
+
+let browser: Browser;
+let page: Page;
+
+let pageTitle: String;
+// async function openBrowser(pageLink: any) {
    
+// }
 
-         When('user click on my login page', async function () {
-           
-         });
 
- 
-       
+  //        Given('user navigates to the application home page', async function () {
+  //         browser = await chromium.launch({headless: false});
+  
+  //  // Setup context however you like.
+  //  const context = await browser.newContext({ /* pass any options */ ignoreHTTPSErrors: true });
+  //  page = await context.newPage();
+  //  await page.goto("https://localhost:44369/");
+        
+          
+  //        });
 
-         When('user gets the title of the page', async function () {
-           
-         });
-
-   
-       
-
-         Then('page title should be {string}', async function (string) {
-           
-         });
 
 
 // 2) Scenario: Login with valid Username and invalid password
        
 
-         Given('user click on my login page', async function () {
-           
-         });
 
- 
+         Given('user go to login page', async function () {
+          browser = await chromium.launch({headless: false});
+  
+          // Setup context however you like.
+          const context = await browser.newContext({ /* pass any options */ ignoreHTTPSErrors: true });
+          page = await context.newPage();
+          await page.goto("https://localhost:44369/login");
+         });
        
 
-         When('user enters username {string}', async function (string) {
-           
+         When('user enters username {string}', async function (username) {
+           await page.locator("//input[@id='Email']").type(username);
          });
 
   
        
 
-         When('user enters password {string}', async function (string) {
-           
-         });
-
- 
-       
-
-         When('user clicks on Login button', async function () {
-           
-         });
-
-  
-       
-
-         Then('user should see error message {string}', async function (string) {
-           
-         });
-
-
-// 3) Scenario: Login with incorrect credentials 
-       
-
-         Given('user click on my login page', async function () {
-           
-         });
-
-
-       
-
-         When('user enters username {string}', async function (string) {
-           
-         });
-
-  
-       
-
-         When('user enters password {string}', async function (string) {
-           
-         });
-
-  
-       
-
-         When('user clicks on Login button', async function () {
-           
-         });
-
-  
-       
-
-         Then('user should see error message {string}', async function (string) {
-           
-         });
-
-
-// 4) Scenario: Login without giving any credentials 
-       
-
-         Given('user click on my login page', async function () {
-           
-         });
-
-  
-       
-
-         When('user enters username {string}', async function (string) {
-           
-         });
-
-  
-       
-
-         When('user enters password {string}', async function (string) {
-           
-         });
-
-
-       
-
-         When('user clicks on Login button', async function () {
-           
-         });
-
-  
-       
-
-         Then('user should see error message as {string}', async function (string) {
-           
-         });
-
-
-// 5) Scenario: Login with wrong email in Email field 
-       
-
-         Given('user click on my login page', async function () {
-           
-         });
-
-  
-       
-
-         When('user enters username {string}', async function (string) {
-           
-         });
-
- 
-       
-
-         When('user enters password {string}', async function (string) {
-           
+         When('user enters password {string}', async function (password) {
+            await page.locator("//input[@id='Password']").type(password);
          });
 
  
        
 
          When('user clicks on Login button', async function () {
-           
-         });
-
- 
-
-         Then('user should see error message {string}', async function (string) {
-           
-         });
-
-
-// 6) Scenario: Login with correct credentials 
-       
-
-         Given('user click on my login page', async function () {
-           
-         });
-
-
-       
-
-         When('user enters username {string}', async function (string) {
-           
-         });
-
-
-       
-
-         When('user enters password {string}', async function (string) {
-           
+           await page.locator("//button[normalize-space()='Log in']").click();
          });
 
   
        
 
-         When('user clicks on Login button', async function () {
-           
+         Then('user should see error message {string}', async function (errorMessage) {
+          const element = await page.locator("//div[@class='message-error validation-summary-errors']");
+          const textContext = await element.textContent();
+          textContext?.replace("\n", "");
+         await expect(textContext).toContain(errorMessage);
+         
          });
 
-  
-       
+        
+        Then('user should see wrong email error {string}', async function (errorMessage) {
+          const element = await page.locator("#Email-error");
+          const textContext = await element.textContent();
+          textContext?.replace("\n", "");
+         await expect(textContext).toContain(errorMessage);
+      
+        });
 
-         When('user click on my account page', async function () {
-           
-         });
+        Then('user should see error message if no customer found {string}', async function (noCustomer) {
+          const element = await page.locator(".message-error.validation-summary-errors");
+          const textContext = await element.textContent();
+          textContext?.replace("\n", "");
+         await expect(textContext).toContain(noCustomer);
+         browser.close();
+        });
 
-   
-       
+        Then('user should see error message as {string}', async function (errorMessage) {
+          const element = await page.locator("#Email-error");
+          const textContext = await element.textContent();
+          textContext?.replace("\n", "");
+         await expect(textContext).toContain(errorMessage);
+        });
 
-         When('user gets the title of the page', async function () {
-           
-         });
+        When('user click on my account page', async function () {
+        const locatePage =  page.locator("//a[@class='ico-account']");
+        locatePage.click();
+        });
 
-   
-       
+        Then('page title should be {string}', async function (pageTitle) {
+         const getTitle =  await page.title()
+         await expect(getTitle).toContain(pageTitle);
+        
+        });
 
-         Then('page title should be {string}', async function (string) {
-           
-         });
+        
+
+
