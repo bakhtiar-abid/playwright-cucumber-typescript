@@ -2,7 +2,7 @@ Feature: Login page feature
 
 
 Background:
-    Given user is on home page
+    Given user navigates to the application home page
     When user click on my login page
     And user gets the title of the page
     Then page title should be "Your store. Login"
