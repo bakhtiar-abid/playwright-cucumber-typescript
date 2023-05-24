@@ -28,6 +28,6 @@ export default class RegisterPage{
        await  this.page.locator("#ConfirmPassword").type(consfirmPass);
     }
    async enterRegister(){
-       await  this.page.locator("#register-button").click();
+       await  this.page.click("#register-button");
     }
 }
