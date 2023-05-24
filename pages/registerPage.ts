@@ -28,6 +28,9 @@ export default class RegisterPage{
        await  this.page.locator("#ConfirmPassword").type(consfirmPass);
     }
    async enterRegister(){
+    // await Promise.all([
+    //     this.page.waitForNavigation({waitUntil:"networkidle"}),
+    // ])
        await  this.page.click("#register-button");
     }
 }

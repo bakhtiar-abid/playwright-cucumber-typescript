@@ -9,5 +9,7 @@ export default class HomePage{
 
     }
 
-    
+    async enterElectronicPage(){
+        await  this.page.click("//ul[@class='top-menu notmobile']//a[normalize-space()='Electronics']");
+     }
 }
