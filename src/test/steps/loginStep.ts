@@ -45,6 +45,7 @@ let pageTitle: String;
        
 
          When('user enters username {string}', async function (username) {
+          // await page.waitForTimeout(10000);
            await page.locator("//input[@id='Email']").type(username);
          });
 
@@ -98,7 +99,7 @@ let pageTitle: String;
         });
 
         When('user click on my account page', async function () {
-        const locatePage =  page.locator("//a[@class='ico-account']");
+        const locatePage = await page.locator("//a[@class='ico-account']");
         locatePage.click();
         });
 
