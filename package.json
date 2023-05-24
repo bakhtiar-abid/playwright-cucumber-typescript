@@ -106,7 +106,7 @@
   "devDependencies": {
     "@playwright/test": "^1.34.2"
   },
-  "scripts": {},
+  "scripts": {"test": "playwright test"},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bakhtiar-abid/playwright-cucumber-typescript.git"
