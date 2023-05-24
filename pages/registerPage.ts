@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Page, expect } from "@playwright/test";
 
 export default class RegisterPage{
 
@@ -32,5 +32,10 @@ export default class RegisterPage{
     //     this.page.waitForNavigation({waitUntil:"networkidle"}),
     // ])
        await  this.page.click("#register-button");
+    }
+
+    async successMessage(){
+     const mssg = await this.page.textContent("//div[@class='result']");
+     return mssg;
     }
 }

@@ -12,7 +12,8 @@ export default class ElectronicPage{
     }
  
    async enterDslr(){
-       await  this.page.click("(//img[@alt='Picture of Nikon D5500 DSLR'])[2]");
+       await  this.page.click("(//h2[@class='product-title']//a)[1]");
+       
     }
    
    async enterAddToCartCamera(){
@@ -22,6 +23,6 @@ export default class ElectronicPage{
 
     async verifyAddToCartSuccessMessage(){
      const successMessage =  await this.page.locator("//div[@class='bar-notification success']//p[1]").textContent();
-     expect(successMessage).toContain("The product has been added to your shopping cart");
+     return successMessage;
     }
 }
