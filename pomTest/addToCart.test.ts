@@ -4,10 +4,10 @@ import RegisterPage from "../pages/registerPage";
 import LoginPage from "../pages/loginPage";
 import HomePage from "../pages/homePage";
 import ElectronicPage from "../pages/electronicsPage";
-import { describe } from "node:test";
 
 
-const email = "new_accounts13@gmail.com";
+
+const email = "new_accounts045@gmail.com";
 const password = "123456";
 const confirmPass = "123456";
 
