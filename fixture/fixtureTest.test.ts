@@ -1,6 +1,6 @@
-import {test} from "./myFixture";
+// import {test} from "./myFixture";
 
 
-test("fixure demo", async({age, email})=>{
- console.log(age, email);
-})
+// test("fixure demo", async({age, email})=>{
+//  console.log(age, email);
+// })
