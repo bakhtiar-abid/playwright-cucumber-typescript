@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
@@ -28,7 +28,7 @@ jobs:
     
   success:
     name: One with everything
-    runs-on: windows-11
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@feature/page-object-model
       - name: Microsoft Teams Notification
@@ -44,7 +44,7 @@ jobs:
       
   without_optional_params:
           name: One with little info
-          runs-on: ubuntu-18.04
+          runs-on: self-hosted
           steps:
             - uses: actions/checkout@feature/page-object-model
             - name: Microsoft Teams Notification
@@ -55,7 +55,7 @@ jobs:
       
   with_overwrite:
           name: One with overwrite
-          runs-on: ubuntu-18.04
+          runs-on: self-hosted
           steps:
             - uses: actions/checkout@feature/page-object-model
             - name: Microsoft Teams Notification
@@ -67,7 +67,7 @@ jobs:
       
   with_raw:
           name: One with raw data
-          runs-on: ubuntu-18.04
+          runs-on: self-hosted
           steps:
             - uses: actions/checkout@feature/page-object-model
             - name: Microsoft Teams Notification
@@ -84,7 +84,7 @@ jobs:
       
   if_failure:
           name: Only if failure
-          runs-on: ubuntu-18.04
+          runs-on: self-hosted
           steps:
             - uses: actions/checkout@feature/page-object-model
             - name: Microsoft Teams Notification
