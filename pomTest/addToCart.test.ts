@@ -21,8 +21,8 @@ test.describe("",async () => {
         await register.enterFirstName("Richard");
         await register.enterLastName("William");
         await register.enterEmail(email);
-        await register.enterPhone("0984485748");
-        await register.enterFax("0957487588");
+        // await register.enterPhone("0984485748");
+        // await register.enterFax("0957487588");
         await register.enterPassword(password);
         await register.enterConfirmPassword(confirmPass);
         await register.enterRegister();

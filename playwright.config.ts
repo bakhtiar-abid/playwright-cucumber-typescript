@@ -23,7 +23,7 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: "https://localhost:44369/",
+    baseURL: "https://training.nop-station.com/",
     headless: true,
     screenshot: "on",
     video: "on",
