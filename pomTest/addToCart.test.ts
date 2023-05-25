@@ -7,7 +7,7 @@ import ElectronicPage from "../pages/electronicsPage";
 
 
 
-const email = "nedfdwif@gmail.com";
+const email = "uritkfk@gmail.com";
 const password = "123456";
 const confirmPass = "123456";
 

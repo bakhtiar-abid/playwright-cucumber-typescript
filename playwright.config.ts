@@ -24,7 +24,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: "https://training.nop-station.com/",
-    headless: true,
+    headless: false,
     screenshot: "on",
     video: "on",
     // launchOptions:{
