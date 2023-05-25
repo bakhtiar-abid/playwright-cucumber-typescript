@@ -5,7 +5,7 @@ Feature: Login page feature
 
 Scenario: Login with valid Username and invalid password
       Given user go to login page
-      When user enters username "latexaid@gmail.com"
+      When user enters username "abid@gmail.com"
       And user enters password "1234567"
       And user clicks on Login button
       Then user should see error message "Login was unsuccessful. Please correct the errors and try again.The credentials provided are incorrect"

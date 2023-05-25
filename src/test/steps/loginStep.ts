@@ -46,7 +46,7 @@ let pageTitle: String;
           // Setup context however you like.
           const context = await browser.newContext({ /* pass any options */ ignoreHTTPSErrors: true });
           page = await context.newPage();
-          await page.goto("https://localhost:44369/login");
+          await page.goto("https://training.nop-station.com/login");
          });
        
 
@@ -95,7 +95,7 @@ let pageTitle: String;
           const textContext = await element.textContent();
           textContext?.replace("\n", "");
          await expect(textContext).toContain(noCustomer);
-         browser.close();
+         
         });
 
         Then('user should see error message as {string}', async function (errorMessage) {
@@ -109,6 +109,7 @@ let pageTitle: String;
         When('user click on my account page', async function () {
         const locatePage = await page.locator("//a[@class='ico-account']");
         locatePage.click();
+        page.close();
         });
 
         Then('page title should be {string}', async function (pageTitle) {
