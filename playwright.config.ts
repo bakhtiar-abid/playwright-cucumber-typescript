@@ -25,6 +25,11 @@ export default defineConfig({
   use: {
     baseURL: "https://localhost:44369/",
     headless: false,
+    screenshot: "on",
+    video: "on",
+    launchOptions:{
+
+    },
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
