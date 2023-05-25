@@ -10,7 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './',
+  testDir: './pomTest/',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,12 +24,12 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: "https://training.nop-station.com/",
-    headless: true,
+    headless: false,
     screenshot: "on",
     video: "on",
-    launchOptions:{
+    // launchOptions:{
 
-    },
+    // },
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
