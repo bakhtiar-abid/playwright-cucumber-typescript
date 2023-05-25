@@ -24,7 +24,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: "https://localhost:44369/",
-    headless: false,
+    headless: true,
     screenshot: "on",
     video: "on",
     launchOptions:{
