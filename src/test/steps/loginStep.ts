@@ -12,6 +12,12 @@ let browser: Browser;
 let page: Page;
 
 let pageTitle: String;
+
+ async function waitForTimeoutt(duration: any) {
+  return await new Promise((resolve) => {
+    setTimeout(resolve, duration);
+  });
+}
 // async function openBrowser(pageLink: any) {
    
 // }
@@ -76,6 +82,7 @@ let pageTitle: String;
 
         
         Then('user should see wrong email error {string}', async function (errorMessage) {
+          await page.waitForSelector("#Email-error", {timeout: 5000});
           const element = await page.locator("#Email-error");
           const textContext = await element.textContent();
           textContext?.replace("\n", "");
@@ -92,6 +99,7 @@ let pageTitle: String;
         });
 
         Then('user should see error message as {string}', async function (errorMessage) {
+          await page.waitForSelector("#Email-error", {timeout: 5000});
           const element = await page.locator("#Email-error");
           const textContext = await element.textContent();
           textContext?.replace("\n", "");

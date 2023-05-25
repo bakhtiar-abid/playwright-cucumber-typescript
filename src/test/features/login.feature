@@ -26,8 +26,17 @@ Scenario: Login without giving any credentials
     And user clicks on Login button
     Then user should see error message as "Please enter your email"
 
+
+    
+Scenario: Login with wrong email in Email field
+    Given user go to login page
+    When user enters username "hello@"
+    And user enters password ""
+    And user clicks on Login button
+    Then user should see wrong email error "Wrong email"
+
 Scenario: Login with correct credentials
-   
+   Given user go to login page
     When user enters username "abid@gmail.com"
     And user enters password "123456"
     And user clicks on Login button
@@ -35,10 +44,3 @@ Scenario: Login with correct credentials
     # Then page title should be "Your store. Login"
 
 
-
-Scenario: Login with wrong email in Email field
-    
-    When user enters username "hello@"
-    And user enters password ""
-    And user clicks on Login button
-    Then user should see wrong email error "Wrong email"
