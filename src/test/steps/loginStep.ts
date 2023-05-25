@@ -41,7 +41,7 @@ let pageTitle: String;
 
 
          Given('user go to login page', async function () {
-          browser = await chromium.launch({headless: false});
+          browser = await chromium.launch({headless: true});
   
           // Setup context however you like.
           const context = await browser.newContext({ /* pass any options */ ignoreHTTPSErrors: true });
