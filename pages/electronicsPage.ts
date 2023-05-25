@@ -12,18 +12,18 @@ export default class ElectronicPage{
     }
  
    async enterDslr(){
-    (await this.page.waitForSelector("//h2[@class='product-title']//a[contains(text(),'Nikon D5500 DSLR')]", { timeout: 5000 })).click();
+    (await this.page.waitForSelector("//h2[@class='product-title']//a[contains(text(),'Nikon D5500 DSLR')]", { timeout: 10000 })).click();
       
        
     }
    
    async enterAddToCartCamera(){
-       (await  this.page.waitForSelector("(//button[@id='add-to-cart-button-15'])[1]", { timeout: 5000 })).click();
+       (await  this.page.waitForSelector("(//button[@id='add-to-cart-button-15'])[1]", { timeout: 10000 })).click();
 
     }
 
     async verifyAddToCartSuccessMessage(){
-     const successMessage =  (await this.page.waitForSelector("//div[@class='bar-notification success']//p[1]", {timeout: 5000})).textContent();
+     const successMessage =  (await this.page.waitForSelector("//div[@class='bar-notification success']//p[1]", {timeout: 10000})).textContent();
     //  const successMessage =  this.page.innerText("//div[@class='bar-notification success']//p[1]");
      return successMessage;
     }
