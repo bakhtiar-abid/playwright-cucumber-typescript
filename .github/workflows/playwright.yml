@@ -5,26 +5,26 @@ on:
   pull_request:
     branches: [ feature/page-object-model, feature/page-object-model ]
 jobs:
-  # test:
-  #   timeout-minutes: 60
-  #   runs-on: self-hosted
-  #   steps:
-  #   - uses: actions/checkout@v3
-  #   - uses: actions/setup-node@v3
-  #     with:
-  #       node-version: 16
-  #   - name: Install dependencies
-  #     run: npm ci
-  #   - name: Install Playwright Browsers
-  #     run: npx playwright install --with-deps
-  #   - name: Run Playwright tests
-  #     run: npm test
-  #   - uses: actions/upload-artifact@v3
-  #     if: always()
-  #     with:
-  #       name: playwright-report
-  #       path: test-results/
-  #       retention-days: 30
+  test:
+    timeout-minutes: 60
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+    - name: Run Playwright tests
+      run: npm test
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: test-results/
+        retention-days: 30
     
   # success:
   #   name: One with everything
@@ -93,7 +93,7 @@ jobs:
   #             with:
   #               webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
 
