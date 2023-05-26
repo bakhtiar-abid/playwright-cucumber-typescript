@@ -30,9 +30,9 @@ jobs:
     name: One with everything
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@feature/page-object-model
+      - uses: actions/checkout@master
       - name: Microsoft Teams Notification
-        uses: skitionek/notify-microsoft-teams@feature/page-object-model
+        uses: skitionek/notify-microsoft-teams@master
         if: always()
         with:
           webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
@@ -46,9 +46,9 @@ jobs:
           name: One with little info
           runs-on: self-hosted
           steps:
-            - uses: actions/checkout@feature/page-object-model
+            - uses: actions/checkout@master
             - name: Microsoft Teams Notification
-              uses: skitionek/notify-microsoft-teams@feature/page-object-model
+              uses: skitionek/notify-microsoft-teams@master
               if: always()
               with:
                 webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
@@ -57,9 +57,9 @@ jobs:
           name: One with overwrite
           runs-on: self-hosted
           steps:
-            - uses: actions/checkout@feature/page-object-model
+            - uses: actions/checkout@master
             - name: Microsoft Teams Notification
-              uses: skitionek/notify-microsoft-teams@feature/page-object-model
+              uses: skitionek/notify-microsoft-teams@master
               if: always()
               with:
                 webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
@@ -69,9 +69,9 @@ jobs:
           name: One with raw data
           runs-on: self-hosted
           steps:
-            - uses: actions/checkout@feature/page-object-model
+            - uses: actions/checkout@master
             - name: Microsoft Teams Notification
-              uses: skitionek/notify-microsoft-teams@feature/page-object-model
+              uses: skitionek/notify-microsoft-teams@master
               if: always()
               with:
                 webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
@@ -86,9 +86,9 @@ jobs:
           name: Only if failure
           runs-on: self-hosted
           steps:
-            - uses: actions/checkout@feature/page-object-model
+            - uses: actions/checkout@master
             - name: Microsoft Teams Notification
-              uses: skitionek/notify-microsoft-teams@feature/page-object-model
+              uses: skitionek/notify-microsoft-teams@master
               if: failure()
               with:
                 webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
