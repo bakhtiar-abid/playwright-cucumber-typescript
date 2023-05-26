@@ -120,8 +120,8 @@ jobs:
     #     title: This is a custom message
     #     summary: This is a message summary
  
-    - name: Microsoft Teams Notification
-      uses: skitionek/notify-microsoft-teams@master
+    
+    - uses: skitionek/notify-microsoft-teams@master
       if: always()
       with:
           webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
