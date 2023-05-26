@@ -82,58 +82,36 @@ jobs:
   #                   "title": "No ${variables} avaliable in here"
   #                 }
       
-  # if_failure:
-  #         name: Only if failure
-  #         runs-on: self-hosted
-  #         steps:
-  #           - uses: actions/checkout@master
-  #           - name: Microsoft Teams Notification
-  #             uses: skitionek/notify-microsoft-teams@master
-  #             if: failure()
-  #             with:
-  #               webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-
-
-  #   # notify on each build event like starting and finishing a build
-  #   - uses: toko-bifrost/ms-teams-deploy-card@master
-  #     if: always()
-  #     with:
-  #       github-token: ${{ github.token }}
-  #       webhook-uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-
-  #   # notify Microsoft Teams channel with a custom message
-  #   - uses: aliencube/microsoft-teams-actions@v0.8.0
-  #     with:
-  #       webhook_uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-  #       title: This is a custom message
-  #       summary: This is a message summary
+  if_failure:
+          name: Only if failure
+          runs-on: self-hosted
+          steps:
+            - uses: actions/checkout@master
+            - name: Microsoft Teams Notification
+              uses: skitionek/notify-microsoft-teams@master
+              if: failure()
+              with:
+                webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      # Add build steps here
 
-  send-notification:
-    needs: build
-    runs-on: ubuntu-latest
+    # notify on each build event like starting and finishing a build
+    - uses: toko-bifrost/ms-teams-deploy-card@master
+      if: always()
+      with:
+        github-token: ${{ github.token }}
+        webhook-uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
 
-    steps:
-      - name: Check Build Status and Notify
-        uses: skitionek/notify-microsoft-teams@master
-        with:
-          webhook-url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-          message: |
-            Build status: ${{ job.status }}
-            Repository: ${{ github.repository }}
-            Commit: ${{ github.sha }}
-        if: always() && (success() || failure())
+    # notify Microsoft Teams channel with a custom message
+    - uses: aliencube/microsoft-teams-actions@v0.8.0
+      with:
+        webhook_uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+        title: This is a custom message
+        summary: This is a message summary
+
 
 
     
