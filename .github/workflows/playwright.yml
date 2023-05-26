@@ -97,6 +97,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    
     # notify on each build event like starting and finishing a build
     - uses: toko-bifrost/ms-teams-deploy-card@master
       if: always()
