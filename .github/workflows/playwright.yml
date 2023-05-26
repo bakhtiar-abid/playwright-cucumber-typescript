@@ -26,70 +26,71 @@ jobs:
         path: test-results/
         retention-days: 30
     
-  success:
-    name: One with everything
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Microsoft Teams Notification
-        uses: skitionek/notify-microsoft-teams@master
-        if: always()
-        with:
-          webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-          # needs: ${{ toJson(needs) }}
-          # job: ${{ toJson(job) }}
-          # steps: ${{ toJson(steps) }}
-          run: |
-            curl -H 'Content-Type: application/json' -d '{
-            "@type": "MessageCard",
-            "@context": "http://schema.org/extensions",
-            "title": "Build Status",
-            "text": "Build status: ${{ job.status }}\nRepository: ${{ github.repository }}\nCommit: ${{ github.sha }}"
-            }' $WEBHOOK_URL
-          dry_run: True
+  # success:
+  #   name: One with everything
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - name: Microsoft Teams Notification
+  #       uses: skitionek/notify-microsoft-teams@master
+  #       if: always()
+  #       with:
+  #         webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+  #         # needs: ${{ toJson(needs) }}
+  #         # job: ${{ toJson(job) }}
+  #         # steps: ${{ toJson(steps) }}
+  #         steps:
+  #         run: |
+  #           curl -H 'Content-Type: application/json' -d '{
+  #           "@type": "MessageCard",
+  #           "@context": "http://schema.org/extensions",
+  #           "title": "Build Status",
+  #           "text": "Build status: ${{ job.status }}\nRepository: ${{ github.repository }}\nCommit: ${{ github.sha }}"
+  #           }' $WEBHOOK_URL
+  #         dry_run: True
       
       
-  without_optional_params:
-          name: One with little info
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@master
-            - name: Microsoft Teams Notification
-              uses: skitionek/notify-microsoft-teams@master
-              if: always()
-              with:
-                webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+  # without_optional_params:
+  #         name: One with little info
+  #         runs-on: ubuntu-latest
+  #         steps:
+  #           - uses: actions/checkout@master
+  #           - name: Microsoft Teams Notification
+  #             uses: skitionek/notify-microsoft-teams@master
+  #             if: always()
+  #             with:
+  #               webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
       
-  with_overwrite:
-          name: One with overwrite
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@master
-            - name: Microsoft Teams Notification
-              uses: skitionek/notify-microsoft-teams@master
-              if: always()
-              with:
-                webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-                overwrite: "{title: `Overwrote title in ${workflow_link}`}"
+  # with_overwrite:
+  #         name: One with overwrite
+  #         runs-on: ubuntu-latest
+  #         steps:
+  #           - uses: actions/checkout@master
+  #           - name: Microsoft Teams Notification
+  #             uses: skitionek/notify-microsoft-teams@master
+  #             if: always()
+  #             with:
+  #               webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+  #               overwrite: "{title: `Overwrote title in ${workflow_link}`}"
       
-  with_raw:
-          name: One with raw data
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@master
-            - name: Microsoft Teams Notification
-              uses: skitionek/notify-microsoft-teams@master
-              if: always()
-              with:
-                webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-                raw: >-
-                  {
-                    "@type": "MessageCard",
-                    "@context": "http://schema.org/extensions",
-                    "title": "No ${variables} avaliable in here"
-  #                 }
+  # with_raw:
+  #         name: One with raw data
+  #         runs-on: ubuntu-latest
+  #         steps:
+  #           - uses: actions/checkout@master
+  #           - name: Microsoft Teams Notification
+  #             uses: skitionek/notify-microsoft-teams@master
+  #             if: always()
+  #             with:
+  #               webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+  #               raw: >-
+  #                 {
+  #                   "@type": "MessageCard",
+  #                   "@context": "http://schema.org/extensions",
+  #                   "title": "No ${variables} avaliable in here"
+  # #                 }
       
-  if_failure:
+  # if_failure:
           name: Only if failure
           runs-on: ubuntu-latest
           steps:
@@ -102,25 +103,25 @@ jobs:
 
 
 
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
 
 
-  #   # notify on each build event like starting and finishing a build
-  #   - uses: toko-bifrost/ms-teams-deploy-card@master
-  #     if: always()
-  #     with:
-  #       github-token: ${{ github.token }}
-  #       webhook-uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+    # notify on each build event like starting and finishing a build
+    - uses: toko-bifrost/ms-teams-deploy-card@master
+      if: always()
+      with:
+        github-token: ${{ github.token }}
+        webhook-uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
 
-  #   # notify Microsoft Teams channel with a custom message
-  #   - uses: aliencube/microsoft-teams-actions@v0.8.0
-  #     with:
-  #       webhook_uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-  #       title: This is a custom message
-  #       summary: This is a message summary
+    # notify Microsoft Teams channel with a custom message
+    - uses: aliencube/microsoft-teams-actions@v0.8.0
+      with:
+        webhook_uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+        title: This is a custom message
+        summary: This is a message summary
 
 
 
