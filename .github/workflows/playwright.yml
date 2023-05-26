@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
@@ -28,7 +28,7 @@ jobs:
     
   success:
     name: One with everything
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: Microsoft Teams Notification
@@ -36,15 +36,22 @@ jobs:
         if: always()
         with:
           webhook_url: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-          needs: ${{ toJson(needs) }}
-          job: ${{ toJson(job) }}
-          steps: ${{ toJson(steps) }}
+          # needs: ${{ toJson(needs) }}
+          # job: ${{ toJson(job) }}
+          # steps: ${{ toJson(steps) }}
+          run: |
+            curl -H 'Content-Type: application/json' -d '{
+            "@type": "MessageCard",
+            "@context": "http://schema.org/extensions",
+            "title": "Build Status",
+            "text": "Build status: ${{ job.status }}\nRepository: ${{ github.repository }}\nCommit: ${{ github.sha }}"
+            }' $WEBHOOK_URL
           dry_run: True
       
       
   without_optional_params:
           name: One with little info
-          runs-on: self-hosted
+          runs-on: ubuntu-latest
           steps:
             - uses: actions/checkout@master
             - name: Microsoft Teams Notification
@@ -55,7 +62,7 @@ jobs:
       
   with_overwrite:
           name: One with overwrite
-          runs-on: self-hosted
+          runs-on: ubuntu-latest
           steps:
             - uses: actions/checkout@master
             - name: Microsoft Teams Notification
@@ -67,7 +74,7 @@ jobs:
       
   with_raw:
           name: One with raw data
-          runs-on: self-hosted
+          runs-on: ubuntu-latest
           steps:
             - uses: actions/checkout@master
             - name: Microsoft Teams Notification
@@ -84,7 +91,7 @@ jobs:
       
   if_failure:
           name: Only if failure
-          runs-on: self-hosted
+          runs-on: ubuntu-latest
           steps:
             - uses: actions/checkout@master
             - name: Microsoft Teams Notification
