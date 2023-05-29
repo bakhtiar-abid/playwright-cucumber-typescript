@@ -1,7 +1,7 @@
 import { test, addToTestResults, getTestResults } from "../base/pomFixture";
 import { expect, TestInfo, FullConfig, FullProject } from "@playwright/test";
 
-const email = "more_user7854785@gmail.com";
+const email = "jkyt8457f@gmail.com";
 const password = "123456";
 const confirmPass = "123456";
 
@@ -102,3 +102,23 @@ const convertToTestInfo = (result: CustomTestResult): TestInfo => {
 // Retrieve the test results
 const results = getTestResults();
 console.log(results);
+
+// Run the test suite
+
+// (async () => {
+//   const results = await run({
+//     timeout: 0, // Set the timeout as per your requirement
+//   });
+
+//   const testInfos = results.map((result) => {
+//     const customResult: CustomTestResult = {
+//       testName: result.testInfo.title,
+//       status: result.status === "passed" ? "passed" : "failed",
+//     };
+//     addToTestResults(convertToTestInfo(customResult));
+//     return result.testInfo;
+//   });
+
+//   console.log(testInfos);
+// })();
+

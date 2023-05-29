@@ -3,6 +3,9 @@ import RegisterPage from "./../pages/registerPage";
 import HomePage from "../pages/homePage";
 import ElectronicPage from "../pages/electronicsPage";
 import LoginPage from "../pages/loginPage";
+const fs = require("fs");
+
+
 
 type Pages = {
   registerPage: RegisterPage;
@@ -10,6 +13,8 @@ type Pages = {
   homePage: HomePage;
   electronicPage: ElectronicPage;
 };
+
+
 
 // Create a separate array to store the test results
 const testResults: TestInfo[] = [];
@@ -34,8 +39,18 @@ const testPages = baseTest.extend<Pages>({
   },
 });
 
+
 export const test = testPages;
 export const expect = testPages.expect;
 export const addToTestResults = (result: TestInfo) => {
   testResults.push(result);
 };
+
+
+// function saveResultsToFile() {
+//   const json = JSON.stringify(testResults, null, 2);
+//   fs.writeFileSync("./test-results.json", json);
+//   console.log("Test results saved to test-results.json");
+// }
+// saveResultsToFile()
+
