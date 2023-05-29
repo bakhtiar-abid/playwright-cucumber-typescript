@@ -15,8 +15,7 @@ async function sendTeamsNotification() {
     - Passed: ${passedTests}
     - Failed: ${failedTests}
 
-    Failed Tests:
-    ${testNames.join('\n')}
+    
   `;
 
   try {
@@ -30,3 +29,6 @@ async function sendTeamsNotification() {
 }
 
 sendTeamsNotification();
+
+// Failed Tests:
+    // ${testNames.join('\n')}
