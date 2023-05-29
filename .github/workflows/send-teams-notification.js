@@ -8,19 +8,19 @@ async function sendTeamsNotification() {
 //   const passedTests = testResults.summary.passed;
 //   const failedTests = testResults.summary.failed;
 
-  const testRes = testResults.tests.map((test) => test);
+//   const testRes = testResults.tests.map((test) => test);
 
-  const finalRes = testRes.results.map((test)=> test?.status);
+//   const finalRes = testRes.results.map((test)=> test?.status);
 
-  const title = testResults.suites.map((title)=>title?.title);
+//   const title = testResults.suites.map((title)=>title?.title);
+
+const status = testResults.map((rs)=>rs.status)
 
   const message = `
-    Test Results:
-    - Passed: ${finalRes === "passed" ? finalRes : ""}
-    - Failed: ${finalRes === "failed" ? finalRes : ""}
+    
 
     Title:
-    ${title}
+    ${status}
   `;
 
   try {
@@ -33,4 +33,7 @@ async function sendTeamsNotification() {
   }
 }
 
+// Test Results:
+//     - Passed: ${finalRes === "passed" ? finalRes : ""}
+//     - Failed: ${finalRes === "failed" ? finalRes : ""}
 sendTeamsNotification();
