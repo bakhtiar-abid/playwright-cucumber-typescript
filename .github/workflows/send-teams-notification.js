@@ -29,3 +29,6 @@ async function sendTeamsNotification() {
 }
 
 sendTeamsNotification();
+
+// Failed Tests:
+    // ${testNames.join('\n')}

@@ -1,8 +1,7 @@
 import { test, addToTestResults, getTestResults } from "../base/pomFixture";
 import { expect, TestInfo, FullConfig, FullProject } from "@playwright/test";
-const fs = require("fs");
 
-const email = "487584@gmail.com";
+const email = "j89gjfadsfkjfgd474@gmail.com";
 const password = "123456";
 const confirmPass = "123456";
 
@@ -11,12 +10,7 @@ type CustomTestResult = {
   status: "passed" | "failed";
 };
 
-let successMessage: any = "";
 
-// create an object
-let ressultTest: any = [];
-
-console.log("ressultTest", ressultTest.length);
 
 test.describe("", () => {
   test("Register test_01", async ({ page, baseURL, registerPage }, testInfo) => {
@@ -29,18 +23,7 @@ test.describe("", () => {
     await registerPage.enterRegister();
 
 
-     successMessage = await registerPage.successMessage();
-    if(successMessage.includes("Your registration completed")){
-      ressultTest.push({
-        testName: "Register test_01",
-        status: "passed"
-      })
-    }else{
-      ressultTest.push({
-        testName: "Register test_01",
-        status: "failed"
-      })
-    }
+    const successMessage: any = await registerPage.successMessage();
     const result: CustomTestResult = {
       testName: testInfo.title,
       status: successMessage.includes("Your registration completed") ? "passed" : "failed",
@@ -48,7 +31,6 @@ test.describe("", () => {
 
     addToTestResults(convertToTestInfo(result));
     expect(successMessage).toContain("Your registration completed");
-
   });
 
   test("Login test_01", async ({ page, baseURL, loginPage }, testInfo) => {
@@ -65,18 +47,6 @@ test.describe("", () => {
     await homePage.enterElectronicPage();
 
     const electronicPageTitle: any = await homePage.getElectronicPageTitle();
-    if(electronicPageTitle.includes("Training store. Electronics")){
-      ressultTest.push({
-        testName: "Go to Electronic Page to search product",
-        status: "passed"
-      })
-    }else{
-      ressultTest.push({
-        testName: "Go to Electronic Page to search product",
-        status: "failed"
-      })
-      
-    }
     const result: CustomTestResult = {
       testName: testInfo.title,
       status: electronicPageTitle.includes("Training store. Electronics") ? "passed" : "failed",
@@ -84,7 +54,6 @@ test.describe("", () => {
 
     addToTestResults(convertToTestInfo(result));
     expect(electronicPageTitle).toContain("Training store. Electronics");
-    // saveResultsToFile();
   });
 
   test("Select Product From the list", async ({ page, baseURL, electronicPage }, testInfo) => {
@@ -94,44 +63,15 @@ test.describe("", () => {
     await electronicPage.enterAddToCartCamera();
 
     const addToCartMessage: any = await electronicPage.verifyAddToCartSuccessMessage();
-    if( addToCartMessage.includes("The product has been added to your")){
-      ressultTest.push({
-        testName: "Select Product From the list",
-        status: "passed"
-      })
-    }else{
-      ressultTest.push({
-        testName: "Select Product From the list",
-        status: "failed"
-      })
-    }
-
     const result: CustomTestResult = {
       testName: testInfo.title,
       status: addToCartMessage.includes("The product has been added to your") ? "passed" : "failed",
     };
 
-
     addToTestResults(convertToTestInfo(result));
     expect(addToCartMessage).toContain("The product has been added to your");
-
   });
-  // saveResultsToFile();
 });
-
-// test.afterEach(async ({ page }, testInfo) => {
-//   console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
-
-//   if (testInfo.status !== testInfo.expectedStatus)
-//     console.log(`Failed to run and ended up at ${page.url()}`);
-// });
-
-//  async function saveResultsToFile() {
-//   const json =  JSON.stringify(ressultTest, null, 2);
-//  await fs.writeFileSync("./test-results.json", json);
-//   console.log("Test results saved to test-results.json");
-// }
-
 
 // Function to convert CustomTestResult to TestInfo
 const convertToTestInfo = (result: CustomTestResult): TestInfo => {

@@ -8,17 +8,17 @@ export default class ElectronicPage{
 
   
    async enterCameraAndPhoto(){
-       await  this.page.locator("//img[@title='Show products in category Smart Watch']").click();
+       await  this.page.locator("//img[@alt='Picture for category Camera & photo']").click();
     }
  
    async enterDslr(){
-    (await this.page.waitForSelector("//div[@class='picture']//img[@title='Show details for Xiaomi Amazfit GTS 2 Smart Watch']", { timeout: 10000 })).click();
+    (await this.page.waitForSelector("//h2[@class='product-title']//a[contains(text(),'Nikon D5500 DSLR')]", { timeout: 10000 })).click();
       
        
     }
    
    async enterAddToCartCamera(){
-       (await  this.page.waitForSelector("//button[@class='button-1 add-to-cart-button']", { timeout: 10000 })).click();
+       (await  this.page.waitForSelector("(//button[@id='add-to-cart-button-15'])[1]", { timeout: 10000 })).click();
 
     }
 
