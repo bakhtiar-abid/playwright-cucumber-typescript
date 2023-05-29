@@ -29,6 +29,21 @@ jobs:
         name: playwright-report
         path: test-results/
         retention-days: 30
+    - name: Parse Test Results
+      id: parse-test-results
+      run: |
+          jq -r '.results[].status' test-results.json > test-statuses.txt
+
+    - name: Send Teams Notification
+      env:
+        WEBHOOK_URL: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+      run: |
+          total_tests=$(wc -l < test-statuses.txt)
+          passed_tests=$(grep -c 'pass' test-statuses.txt)
+          failed_tests=$(grep -c 'fail' test-statuses.txt)
+          curl -H "Content-Type: application/json" -d '{
+            "text": "Workflow '${{ github.workflow }}' completed with ${{ job.status }} status.\n\nTest Results:\n- Total Tests: '${total_tests}'\n- Passed: '${passed_tests}'\n- Failed: '${failed_tests}'"
+          }' $WEBHOOK_URL
     
   # success:
   #   name: One with everything
@@ -134,19 +149,7 @@ jobs:
 #   types:
 #     - completed
 # jobs:
-  send-notification:
-        runs-on: ubuntu-latest
-    
-        steps:
-          - name: Send Teams Notification
-            env:
-              WEBHOOK_URL: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
-            run: |
-              workflow_name="${{ github.event.workflow }}"
-              curl -H "Content-Type: application/json" -d '{
-                "text": "Workflow '${workflow_name}' completed with ${{ job.status }} status.\n\nTest Results:\n- Total Tests: 10\n- Passed: 8\n- Failed: 2"
-              }' $WEBHOOK_URL
-    
+
 
 
 
