@@ -1,47 +1,41 @@
-import {test as baseTest} from "@playwright/test";
-import RegisterPage from './../pages/registerPage';
-
+import { test as baseTest, TestInfo } from "@playwright/test";
+import RegisterPage from "./../pages/registerPage";
 import HomePage from "../pages/homePage";
 import ElectronicPage from "../pages/electronicsPage";
 import LoginPage from "../pages/loginPage";
 
+type Pages = {
+  registerPage: RegisterPage;
+  loginPage: LoginPage;
+  homePage: HomePage;
+  electronicPage: ElectronicPage;
+};
 
-type pages = {
-    registerPage :RegisterPage;
-    loginPage : LoginPage;
-    homePage : HomePage;
-    electronicPage : ElectronicPage;
-}
-
-const testResults: any[] = [];
-
-const testPages = baseTest.extend<pages>({
+// Create a separate array to store the test results
+const testResults: TestInfo[] = [];
 
 
- registerPage: async ({page}, use)=>{
+
+export const getTestResults = (): TestInfo[] => testResults;
+console.log("testResults", getTestResults);
+// Extend the base test to include the `addToTestResults` method
+const testPages = baseTest.extend<Pages>({
+  registerPage: async ({ page }, use) => {
     await use(new RegisterPage(page));
- },
-
-
- loginPage: async ({page}, use)=>{
+  },
+  loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
- },
- homePage: async ({page}, use)=>{
+  },
+  homePage: async ({ page }, use) => {
     await use(new HomePage(page));
- },
- electronicPage: async ({page}, use)=>{
+  },
+  electronicPage: async ({ page }, use) => {
     await use(new ElectronicPage(page));
- }
-
-})
-
-export const test = testPages.extend<{
-  addToTestResults: (result: any) => void;
-}>({
-  addToTestResults(result) {
-    testResults.push(result);
   },
 });
 
+export const test = testPages;
 export const expect = testPages.expect;
-export { testResults };
+export const addToTestResults = (result: TestInfo) => {
+  testResults.push(result);
+};
