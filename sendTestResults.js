@@ -1,4 +1,4 @@
-const fs = require("fs");
+const axios = require("axios");
 
 const testResults = require("./test-results.json");
 
@@ -32,5 +32,4 @@ function sendNotification() {
       });
 }
 
-saveResultsToFile();
 sendNotification();

@@ -1,7 +1,7 @@
 import { test, addToTestResults, getTestResults } from "../base/pomFixture";
 import { expect, TestInfo, FullConfig, FullProject } from "@playwright/test";
 
-const email = "jkyt8457f@gmail.com";
+const email = "j89gfgd474@gmail.com";
 const password = "123456";
 const confirmPass = "123456";
 
@@ -9,6 +9,8 @@ type CustomTestResult = {
   testName: string;
   status: "passed" | "failed";
 };
+
+
 
 test.describe("", () => {
   test("Register test_01", async ({ page, baseURL, registerPage }, testInfo) => {
@@ -19,6 +21,7 @@ test.describe("", () => {
     await registerPage.enterPassword(password);
     await registerPage.enterConfirmPassword(confirmPass);
     await registerPage.enterRegister();
+
 
     const successMessage: any = await registerPage.successMessage();
     const result: CustomTestResult = {
