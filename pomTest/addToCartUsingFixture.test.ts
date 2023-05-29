@@ -1,7 +1,7 @@
 import { expect, test} from "../base/pomFixture";
 
 
-const email = "user_me01@gmail.com";
+const email = "user_me02@gmail.com";
 const password = "123456";
 const confirmPass = "123456";
 

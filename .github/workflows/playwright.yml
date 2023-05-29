@@ -137,7 +137,7 @@ jobs:
     steps:
       - name: Send Teams Notification
         env:
-          WEBHOOK_URL: ${{ secrets.MICROSOFT_TEAMS_WEBHOOK_URI }}
+          WEBHOOK_URL: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
         run: |
           curl -H "Content-Type: application/json" -d '{
             "text": "Workflow ${{ github.workflow }} completed with ${{ job.status }} status.\n\nTest Results:\n- Total Tests: <YOUR TOTAL TESTS COUNT>\n- Passed: <YOUR PASSED TESTS COUNT>\n- Failed: <YOUR FAILED TESTS COUNT>"
