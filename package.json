@@ -12,6 +12,7 @@
     "arg": "^4.1.3",
     "assert-plus": "^1.0.0",
     "assertion-error-formatter": "^3.0.0",
+    "axios": "^1.4.0",
     "balanced-match": "^1.0.2",
     "brace-expansion": "^1.1.11",
     "buffer-from": "^1.1.2",
@@ -106,7 +107,9 @@
   "devDependencies": {
     "@playwright/test": "^1.34.2"
   },
-  "scripts": {"test": "playwright test"},
+  "scripts": {
+    "test": "playwright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bakhtiar-abid/playwright-cucumber-typescript.git"

@@ -13,6 +13,7 @@ type pages = {
     electronicPage : ElectronicPage;
 }
 
+const testResults: any[] = [];
 
 const testPages = baseTest.extend<pages>({
 
@@ -34,5 +35,13 @@ const testPages = baseTest.extend<pages>({
 
 })
 
-export const test = testPages;
+export const test = testPages.extend<{
+  addToTestResults: (result: any) => void;
+}>({
+  addToTestResults(result) {
+    testResults.push(result);
+  },
+});
+
 export const expect = testPages.expect;
+export { testResults };
