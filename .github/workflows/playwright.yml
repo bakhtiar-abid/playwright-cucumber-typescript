@@ -4,6 +4,10 @@ on:
     branches: [ feature/page-object-model, feature/page-object-model ]
   pull_request:
     branches: [ feature/page-object-model, feature/page-object-model ]
+  workflow_run:
+      workflows: [Build and Test]
+      types:
+      - completed
 jobs:
   test:
     timeout-minutes: 60
@@ -107,11 +111,11 @@ jobs:
 
 
     # notify on each build event like starting and finishing a build
-    - uses: toko-bifrost/ms-teams-deploy-card@master
-      if: always()
-      with:
-        github-token: ${{ github.token }}
-        webhook-uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+    # - uses: toko-bifrost/ms-teams-deploy-card@master
+    #   if: always()
+    #   with:
+    #     github-token: ${{ github.token }}
+    #     webhook-uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
 
     # # notify Microsoft Teams channel with a custom message
     # - uses: aliencube/microsoft-teams-actions@v0.8.0
@@ -119,6 +123,30 @@ jobs:
     #     webhook_uri: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
     #     title: This is a custom message
     #     summary: This is a message summary
+
+
+
+
+ 
+
+# name: Send Teams Notification
+  send-notification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Teams Notification
+        uses: rtCamp/action-microsoft-teams@v2.0.1
+        with:
+          webhook-url: ${{ secrets.MICROSOFT_TEAMS_WEBHOOK_URI }}
+          status: ${{ job.status }}
+          message: |
+            Workflow ${{ github.workflow }} completed with ${{ job.status }} status.
+
+            Test Results:
+            - Total Tests: <YOUR TOTAL TESTS COUNT>
+            - Passed: <YOUR PASSED TESTS COUNT>
+            - Failed: <YOUR FAILED TESTS COUNT>
+
  
     
   

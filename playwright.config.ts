@@ -43,7 +43,7 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'], // Set the context options
       contextOptions: {
-        ignoreHTTPSErrors: true,
+        ignoreHTTPSErrors: false,
       }, },
      
     },
