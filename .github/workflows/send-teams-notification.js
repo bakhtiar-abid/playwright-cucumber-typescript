@@ -5,17 +5,22 @@ const webhookUrl = "https://brainstationo365.webhook.office.com/webhookb2/8057d2
 async function sendTeamsNotification() {
   const testResults = require('../../test-results.json'); // Adjust the path to your actual test results file
 
-  const passedTests = testResults.passed;
-  const failedTests = testResults.failed;
+  const passedTests = testResults.summary.passed;
+  const failedTests = testResults.summary.failed;
 
-//   const testNames = testResults.tests.map((test) => test.name);
+  const testRes = testResults.tests.map((test) => test);
+
+  const finalRes = testRes.results.map((test)=> test.status);
+
+  const title = testResults.suites.map((title)=>title.title);
 
   const message = `
     Test Results:
-    - Passed: ${passedTests}
-    - Failed: ${failedTests}
+    - Passed: ${finalRes === "passed" ? finalRes : ""}
+    - Failed: ${finalRes === "failed" ? finalRes : ""}
 
-    
+    Title:
+    ${title}
   `;
 
   try {
@@ -29,6 +34,3 @@ async function sendTeamsNotification() {
 }
 
 sendTeamsNotification();
-
-// Failed Tests:
-    // ${testNames.join('\n')}
