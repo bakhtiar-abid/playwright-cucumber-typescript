@@ -130,22 +130,18 @@ jobs:
  
 
 # name: Send Teams Notification
+
   send-notification:
     runs-on: ubuntu-latest
 
     steps:
       - name: Send Teams Notification
-        uses: rtCamp/action-microsoft-teams@v2.0.1
-        with:
-          webhook-url: ${{ secrets.MICROSOFT_TEAMS_WEBHOOK_URI }}
-          status: ${{ job.status }}
-          message: |
-            Workflow ${{ github.workflow }} completed with ${{ job.status }} status.
-
-            Test Results:
-            - Total Tests: <YOUR TOTAL TESTS COUNT>
-            - Passed: <YOUR PASSED TESTS COUNT>
-            - Failed: <YOUR FAILED TESTS COUNT>
+        env:
+          WEBHOOK_URL: ${{ secrets.MICROSOFT_TEAMS_WEBHOOK_URI }}
+        run: |
+          curl -H "Content-Type: application/json" -d '{
+            "text": "Workflow ${{ github.workflow }} completed with ${{ job.status }} status.\n\nTest Results:\n- Total Tests: <YOUR TOTAL TESTS COUNT>\n- Passed: <YOUR PASSED TESTS COUNT>\n- Failed: <YOUR FAILED TESTS COUNT>"
+          }' $WEBHOOK_URL
 
  
     
