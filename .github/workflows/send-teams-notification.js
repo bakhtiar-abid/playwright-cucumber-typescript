@@ -20,11 +20,11 @@ async function sendTeamsNotification() {
 
   var results;
 
-  testSuites = testResults?.suites?.map((suit)=>suit);
+  testSuites = testResults?.suites?.map((suit)=>suit.suites);
 
-  testTitle = testSuites?.specs?.map((spec)=>spec.title);
+  testTitle = testSuites?.map((spec)=>spec.specs);
 
- testAllSpec = testSuites?.specs?.map((allSpec)=>allSpec);
+ testAllSpec = testTitle?.map((allSpec)=>allSpec.title);
 
  tests = testAllSpec?.tests?.map((test)=>test);
 
@@ -36,9 +36,7 @@ testStatus = results?.status;
 // const status = testSuite.map((expRes)=>expRes.expectedStatus);
   const message = `
     Test Results:
-    - TestTitle: ${testTitle}
-    - Passed: ${testStatus === "passed" ? testStatus : ""}
-    - Failed: ${testStatus === "failed" ? testStatus : ""}
+    - TestTitle: ${testAllSpec}
 
     
   `;
@@ -59,3 +57,7 @@ sendTeamsNotification();
     // ${testNames.join('\n')}
 
     // - Skipped: ${testStatus === "skipped" ? testStatus : ""}
+
+
+    // - Passed: ${testAllSpec === "passed" ? testAllSpec : ""}
+    // - Failed: ${testAllSpec === "failed" ? testStatus : ""}
