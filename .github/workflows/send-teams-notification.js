@@ -7,21 +7,38 @@ async function sendTeamsNotification() {
 
   // const passedTests = testResults.passed;
   // const failedTests = testResults.failed;
-  var testSuite;
-  var resultss;
-  var testResult;
 
-const testTitle = testResults.suites.map((getTitle)=>getTitle.title);
-testSuite = testResults.suites.map((suit)=>suit.specs);
-testResult = testSuite.map((res)=>res.results);
+  var testSuites;
+
+  var testTitle;
+
+  var testAllSpec;
+
+  var testStatus;
+
+  var tests;
+
+  var results;
+
+  testSuites = testResults.suites.map((suit)=>suit);
+
+  testTitle = testSuites.specs.map((spec)=>spec.title);
+
+ testAllSpec = testSuites.specs.map((allSpec)=>allSpec);
+
+ tests = testAllSpec.tests.map((test)=>test);
+
+results = tests.results.map((stat)=>stat);
+
+testStatus = results.status;
+
 // testResult = resultss.map((stat)=>stat.status);
 // const status = testSuite.map((expRes)=>expRes.expectedStatus);
   const message = `
     Test Results:
     - TestTitle: ${testTitle}
-    - Passed: ${testResult.status === "passed" ? testResult.status : ""}
-    - Skipped: ${testResult.status === "skipped" ? testResult.status : ""}
-    - Failed: ${testResult.status === "failed" ? testResult.status : ""}
+    - Passed: ${testStatus === "passed" ? testStatus : ""}
+    - Failed: ${testStatus === "failed" ? testStatus : ""}
 
     
   `;
@@ -40,3 +57,5 @@ sendTeamsNotification();
 
 // Failed Tests:
     // ${testNames.join('\n')}
+
+    // - Skipped: ${testStatus === "skipped" ? testStatus : ""}

@@ -43,54 +43,10 @@
     "shard": null,
     "updateSnapshots": "missing",
     "version": "1.34.2",
-    "workers": 5,
+    "workers": 4,
     "webServer": null
   },
   "suites": [
-    {
-      "title": "addToCart.test.ts",
-      "file": "addToCart.test.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [
-        {
-          "title": "",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [
-                {
-                  "type": "skip"
-                }
-              ],
-              "expectedStatus": "skipped",
-              "projectId": "chromium",
-              "projectName": "chromium",
-              "results": [
-                {
-                  "workerIndex": -1,
-                  "status": "skipped",
-                  "duration": 0,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2023-05-30T05:54:40.425Z",
-                  "attachments": []
-                }
-              ],
-              "status": "skipped"
-            }
-          ],
-          "id": "7fd058b15c0ca70151c1-1b80a3b16237788ac471",
-          "file": "addToCart.test.ts",
-          "line": 15,
-          "column": 6
-        }
-      ]
-    },
     {
       "title": "addToCartUsingFixture.test.ts",
       "file": "addToCartUsingFixture.test.ts",
@@ -119,12 +75,12 @@
                     {
                       "workerIndex": 0,
                       "status": "passed",
-                      "duration": 4220,
+                      "duration": 5029,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2023-05-30T05:54:40.891Z",
+                      "startTime": "2023-05-30T17:02:12.509Z",
                       "attachments": [
                         {
                           "name": "video",
@@ -162,12 +118,12 @@
                     {
                       "workerIndex": 1,
                       "status": "passed",
-                      "duration": 3426,
+                      "duration": 4215,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2023-05-30T05:54:40.885Z",
+                      "startTime": "2023-05-30T17:02:12.540Z",
                       "attachments": [
                         {
                           "name": "video",
@@ -205,12 +161,12 @@
                     {
                       "workerIndex": 2,
                       "status": "passed",
-                      "duration": 5759,
+                      "duration": 5294,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2023-05-30T05:54:40.905Z",
+                      "startTime": "2023-05-30T17:02:12.545Z",
                       "attachments": [
                         {
                           "name": "video",
@@ -235,7 +191,7 @@
             },
             {
               "title": "Select Product From the list",
-              "ok": false,
+              "ok": true,
               "tags": [],
               "tests": [
                 {
@@ -247,32 +203,13 @@
                   "results": [
                     {
                       "workerIndex": 3,
-                      "status": "failed",
-                      "duration": 17662,
-                      "error": {
-                        "message": "page.waitForSelector: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('xpath=//div[@class=\\'bar-notification success\\']//p[1]') to be visible\n============================================================",
-                        "stack": "TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('xpath=//div[@class=\\'bar-notification success\\']//p[1]') to be visible\n============================================================\n    at ElectronicPage.verifyAddToCartSuccessMessage (C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\pages\\electronicsPage.ts:26:47)\n    at C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\pomTest\\addToCartUsingFixture.test.ts:65:56",
-                        "location": {
-                          "file": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\pages\\electronicsPage.ts",
-                          "column": 47,
-                          "line": 26
-                        },
-                        "snippet": "\u001b[90m   at \u001b[39m..\\pages\\electronicsPage.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36masync\u001b[39m verifyAddToCartSuccessMessage(){\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m      \u001b[36mconst\u001b[39m successMessage \u001b[33m=\u001b[39m  (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m\"//div[@class='bar-notification success']//p[1]\"\u001b[39m\u001b[33m,\u001b[39m {timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m}))\u001b[33m.\u001b[39mtextContent()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[90m//  const successMessage =  this.page.innerText(\"//div[@class='bar-notification success']//p[1]\");\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 |\u001b[39m      \u001b[36mreturn\u001b[39m successMessage\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 29 |\u001b[39m     }\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\pages\\electronicsPage.ts",
-                            "column": 47,
-                            "line": 26
-                          },
-                          "message": "TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('xpath=//div[@class=\\'bar-notification success\\']//p[1]') to be visible\n============================================================\n\n\u001b[90m   at \u001b[39m..\\pages\\electronicsPage.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36masync\u001b[39m verifyAddToCartSuccessMessage(){\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m      \u001b[36mconst\u001b[39m successMessage \u001b[33m=\u001b[39m  (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m\"//div[@class='bar-notification success']//p[1]\"\u001b[39m\u001b[33m,\u001b[39m {timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m}))\u001b[33m.\u001b[39mtextContent()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[90m//  const successMessage =  this.page.innerText(\"//div[@class='bar-notification success']//p[1]\");\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 |\u001b[39m      \u001b[36mreturn\u001b[39m successMessage\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 29 |\u001b[39m     }\u001b[0m\n\n\u001b[2m    at ElectronicPage.verifyAddToCartSuccessMessage (C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\pages\\electronicsPage.ts:26:47)\u001b[22m\n\u001b[2m    at C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\pomTest\\addToCartUsingFixture.test.ts:65:56\u001b[22m"
-                        }
-                      ],
+                      "status": "passed",
+                      "duration": 7908,
+                      "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2023-05-30T05:54:40.894Z",
+                      "startTime": "2023-05-30T17:02:12.542Z",
                       "attachments": [
                         {
                           "name": "video",
@@ -282,17 +219,12 @@
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Select-Product-From-the-list-chromium\\test-failed-1.png"
+                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Select-Product-From-the-list-chromium\\test-finished-1.png"
                         }
-                      ],
-                      "errorLocation": {
-                        "file": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\pages\\electronicsPage.ts",
-                        "column": 47,
-                        "line": 26
-                      }
+                      ]
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
               "id": "23a4a57a8f3b3565b855-89ca4cdf91363b249a3e",
