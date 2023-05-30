@@ -7,11 +7,11 @@ async function sendTeamsNotification() {
 
   // const passedTests = testResults.passed;
   // const failedTests = testResults.failed;
-
+  var testSuite;
 
 const testTitle = testResults.suites.map((getTitle)=>getTitle.title)
-
-const status = testResults.suites.specs.map((expRes)=>expRes.expectedStatus)
+testSuite = testResults.suites.map((suit)=>suit.specs)
+const status = testSuite.map((expRes)=>expRes.expectedStatus)
   const message = `
     Test Results:
     - TestTitle: ${testTitle}
