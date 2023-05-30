@@ -13,15 +13,15 @@ async function sendTeamsNotification() {
 
 const testTitle = testResults.suites.map((getTitle)=>getTitle.title);
 testSuite = testResults.suites.map((suit)=>suit.specs);
-resultss = testSuite.map((res)=>res.results);
-testResult = resultss.map((stat)=>stat.status);
+testResult = testSuite.map((res)=>res.results);
+// testResult = resultss.map((stat)=>stat.status);
 // const status = testSuite.map((expRes)=>expRes.expectedStatus);
   const message = `
     Test Results:
     - TestTitle: ${testTitle}
-    - Passed: ${testResult === "passed" ? testResult : ""}
-    - Skipped: ${testResult === "skipped" ? testResult : ""}
-    - Failed: ${testResult === "failed" ? testResult : ""}
+    - Passed: ${testResult.status === "passed" ? testResult.status : ""}
+    - Skipped: ${testResult.status === "skipped" ? testResult.status : ""}
+    - Failed: ${testResult.status === "failed" ? testResult.status : ""}
 
     
   `;
