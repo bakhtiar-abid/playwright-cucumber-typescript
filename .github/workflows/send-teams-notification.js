@@ -8,16 +8,18 @@ async function sendTeamsNotification() {
   // const passedTests = testResults.passed;
   // const failedTests = testResults.failed;
   var testSuite;
+  var testResult;
 
-const testTitle = testResults.suites.map((getTitle)=>getTitle.title)
-testSuite = testResults.suites.map((suit)=>suit.specs)
-const status = testSuite.map((expRes)=>expRes.expectedStatus)
+const testTitle = testResults.suites.map((getTitle)=>getTitle.title);
+testSuite = testResults.suites.map((suit)=>suit.specs);
+testResult = testSuite.tests.map((res)=>res.status);
+// const status = testSuite.map((expRes)=>expRes.expectedStatus);
   const message = `
     Test Results:
     - TestTitle: ${testTitle}
-    - Passed: ${status === "passed" ? status : ""}
-    - Skipped: ${status === "skipped" ? status : ""}
-    - Failed: ${status === "failed" ? status : ""}
+    - Passed: ${testResult === "passed" ? testResult : ""}
+    - Skipped: ${testResult === "skipped" ? testResult : ""}
+    - Failed: ${testResult === "failed" ? testResult : ""}
 
     
   `;
