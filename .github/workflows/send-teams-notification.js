@@ -16,8 +16,8 @@ const status = testSuite.map((expRes)=>expRes.expectedStatus)
     Test Results:
     - TestTitle: ${testTitle}
     - Passed: ${status === "passed" ? status : ""}
-    - Skipped: ${status === "failed" ? status : ""}
-    - Failed: ${failedTests}
+    - Skipped: ${status === "skipped" ? status : ""}
+    - Failed: ${status === "failed" ? status : ""}
 
     
   `;
