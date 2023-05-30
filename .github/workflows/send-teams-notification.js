@@ -20,17 +20,17 @@ async function sendTeamsNotification() {
 
   var results;
 
-  testSuites = testResults.suites.map((suit)=>suit);
+  testSuites = testResults?.suites?.map((suit)=>suit);
 
-  testTitle = testSuites.specs.map((spec)=>spec.title);
+  testTitle = testSuites?.specs?.map((spec)=>spec.title);
 
- testAllSpec = testSuites.specs.map((allSpec)=>allSpec);
+ testAllSpec = testSuites?.specs?.map((allSpec)=>allSpec);
 
- tests = testAllSpec.tests.map((test)=>test);
+ tests = testAllSpec?.tests?.map((test)=>test);
 
-results = tests.results.map((stat)=>stat);
+results = tests?.results?.map((stat)=>stat);
 
-testStatus = results.status;
+testStatus = results?.status;
 
 // testResult = resultss.map((stat)=>stat.status);
 // const status = testSuite.map((expRes)=>expRes.expectedStatus);
