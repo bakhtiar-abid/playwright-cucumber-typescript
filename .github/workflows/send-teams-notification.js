@@ -8,11 +8,13 @@ async function sendTeamsNotification() {
   // const passedTests = testResults.passed;
   // const failedTests = testResults.failed;
   var testSuite;
+  var resultss;
   var testResult;
 
 const testTitle = testResults.suites.map((getTitle)=>getTitle.title);
 testSuite = testResults.suites.map((suit)=>suit.specs);
-testResult = testSuite.tests.map((res)=>res.status);
+resultss = testSuite.map((res)=>res.results);
+testResult = resultss.map((stat)=>stat.status);
 // const status = testSuite.map((expRes)=>expRes.expectedStatus);
   const message = `
     Test Results:
