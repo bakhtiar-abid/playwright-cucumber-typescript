@@ -29,12 +29,83 @@ jobs:
         name: playwright-report
         path: test-results/
         retention-days: 30
-    - name: Send test results to Microsoft Teams
+    # - name: Send test results to Microsoft Teams
+    #   run: |
+    #       npm install axios
+    #       node .github/workflows/send-teams-notification.js
+    #   env:
+    #    TEAMS_WEBHOOK_URL: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+    - name: Get All Tests
+      uses: mavrosxristoforos/get-xml-info@1.1.1
+      id: getxml_tests
+      if: always()
+      with:
+          xml-file: "./results.xml"
+          xpath: '//testsuite/@tests'
+
+#     - name: Get Passed Tests
+#       uses: mavrosxristoforos/get-xml-info@1.1.1
+#       id: getxml_passed
+#       if: always()
+#       with:
+#           xml-file: "report/Xml/ExtentXml.xml"
+#           xpath: '//testsuite/@passed'
+
+    - name: Get Failed Tests
+      uses: mavrosxristoforos/get-xml-info@1.1.1
+      id: getxml_failures
+      if: always()
+      with:
+          xml-file: "./results.xml"
+          xpath: '//testsuite/@failures'
+
+    - name: Get Skipped Tests
+      uses: mavrosxristoforos/get-xml-info@1.1.1
+      id: getxml_skipped
+      if: always()
+      with:
+          xml-file: "./results.xml"
+          xpath: '//testsuite/@skipped'
+
+    - name: Generate Reports
+      if: always()
       run: |
-          npm install axios
-          node .github/workflows/send-teams-notification.js
-      env:
-       TEAMS_WEBHOOK_URL: https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
+          echo "tests=${{ steps.getxml_tests.outputs.info }}" >> $GITHUB_ENV
+          echo "failures=${{ steps.getxml_failures.outputs.info }}" >> $GITHUB_ENV
+          echo "skipped=${{ steps.getxml_skipped.outputs.info }}" >> $GITHUB_ENV
+          
+#     - name: Print Debug Log
+#       if: always()
+#       run: |
+#           echo "Results: failed: ${{ env.failed }}, passed: ${{ env.passed }}"
+#           cat ./debug.log
+
+
+    - name: Send Test Results to Microsoft Teams
+      run: |
+        curl -H "Content-Type: application/json" -d '{
+          "text": "Test Results for Java Maven Project",
+          "sections": [
+            {
+              "activityTitle": "Test Cases",
+              "activitySubtitle": "Execution Report",
+              "facts": [
+                {
+                  "name": "Tests",
+                  "value": "${{ env.tests }}"
+                },
+                {
+                  "name": "Skipped",
+                  "value": "${{ env.skipped }}"
+                },
+                {
+                  "name": "Failures",
+                  "value": "${{ env.failures }}"
+                }
+              ]
+            }
+          ]
+        }'https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130
     
   # success:
   #   name: One with everything
