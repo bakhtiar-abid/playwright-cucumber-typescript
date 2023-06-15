@@ -1,7 +1,7 @@
 import { test, addToTestResults, getTestResults } from '../base/pomFixture'
 import { expect, TestInfo, FullConfig, FullProject } from '@playwright/test'
 
-const email = 'hello_world8@gmail.com'
+const email = 'hello_world9@gmail.com'
 const password = '123456'
 const confirmPass = '123456'
 
