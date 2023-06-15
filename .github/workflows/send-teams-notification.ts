@@ -7,65 +7,65 @@ const webhookUrl =
   var test3;
   var test4;
 async function sendTeamsNotification() {
-  const testResults = require('../../test-results.json') // Adjust the path to your actual test results file
+  // const testResults = require('../../test-results.json') // Adjust the path to your actual test results file
 
-  customResults();
-  // const passedTests = testResults.passed;
-  // const failedTests = testResults.failed;
+  // customResults();
+  // // const passedTests = testResults.passed;
+  // // const failedTests = testResults.failed;
 
-  var result = testResults.suites?.reduce((res, cur, index) => {
-    res += cur.specs.map((spec) => {
-      var testPassed,
-        testFailed = spec.tests.reduce(
-          (acc, test) => {
-            if (test.results.every((result) => result.status === 'passed')) {
-              acc.testPassed += 1
-            } else {
-              acc.testFailed += 1
-            }
-            return acc
-          },
-          { testPassed: 0, testFailed: 0 }
-        )
-      var message = `Suites: ${index} \n title: ${spec.title} \n tests passed: ${testPassed}, tests failed: ${testFailed} \n\n`
-      return message
-    }, '')
-  })
+  // var result = testResults.suites?.reduce((res, cur, index) => {
+  //   res += cur.specs.map((spec) => {
+  //     var testPassed,
+  //       testFailed = spec.tests.reduce(
+  //         (acc, test) => {
+  //           if (test.results.every((result) => result.status === 'passed')) {
+  //             acc.testPassed += 1
+  //           } else {
+  //             acc.testFailed += 1
+  //           }
+  //           return acc
+  //         },
+  //         { testPassed: 0, testFailed: 0 }
+  //       )
+  //     var message = `Suites: ${index} \n title: ${spec.title} \n tests passed: ${testPassed}, tests failed: ${testFailed} \n\n`
+  //     return message
+  //   }, '')
+  // })
 
-  var testSuites
+  // var testSuites
 
-  var testTitle
+  // var testTitle
 
-  var testAllSpec
+  // var testAllSpec
 
-  var testStatus
+  // var testStatus
 
-  var tests
+  // var tests
 
-  var results
+  // var results
 
-  testSuites = testResults?.suites?.map((suit) => suit.suites)
+  // testSuites = testResults?.suites?.map((suit) => suit.suites)
 
-  testTitle = testSuites?.map((spec) => spec.specs)
+  // testTitle = testSuites?.map((spec) => spec.specs)
 
-  testAllSpec = testTitle?.map((allSpec) => allSpec.title)
+  // testAllSpec = testTitle?.map((allSpec) => allSpec.title)
 
-  tests = testAllSpec?.tests?.map((test) => test)
+  // tests = testAllSpec?.tests?.map((test) => test)
 
-  results = tests?.results?.map((stat) => stat)
+  // results = tests?.results?.map((stat) => stat)
 
-  testStatus = results?.status
+  // testStatus = results?.status
 
   // testResult = resultss.map((stat)=>stat.status);
   // const status = testSuite.map((expRes)=>expRes.expectedStatus);
   const message = `
     Test Results:
-    - TestTitle: ${testAllSpec}
     - ${test1}
     
   `
 
-  console.log(result)
+  // console.log(result)
+      // - TestTitle: ${testAllSpec}
 
   try {
     await axios.post(webhookUrl, {
