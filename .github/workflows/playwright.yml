@@ -84,7 +84,7 @@ jobs:
     - name: Send Test Results to Microsoft Teams
       run: |
         curl -H "Content-Type: application/json" -d '{
-          "text": "Test Results for Java Maven Project",
+          "text": "Test Results",
           "sections": [
             {
               "activityTitle": "Test Cases",
