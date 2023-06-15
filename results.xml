@@ -1,0 +1,70 @@
+<testsuites id="" name="" tests="4" failures="1" skipped="0" errors="0" time="23.407762000000105">
+<testsuite name="addToCartUsingFixture.test.ts" timestamp="2023-06-15T06:06:17.822Z" hostname="chromium" tests="4" failures="1" skipped="0" time="44.163" errors="0">
+<testcase name="Register test_01" classname="addToCartUsingFixture.test.ts" time="9.778">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\addToCartUsingFixture-Register-test-01-chromium\video.webm]]
+
+[[ATTACHMENT|..\test-results\addToCartUsingFixture-Register-test-01-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Login test_01" classname="addToCartUsingFixture.test.ts" time="5.857">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\addToCartUsingFixture-Login-test-01-chromium\video.webm]]
+
+[[ATTACHMENT|..\test-results\addToCartUsingFixture-Login-test-01-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Go to Electronic Page to search product" classname="addToCartUsingFixture.test.ts" time="6.738">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\addToCartUsingFixture-Go-to-Electronic-Page-to-search-product-chromium\video.webm]]
+
+[[ATTACHMENT|..\test-results\addToCartUsingFixture-Go-to-Electronic-Page-to-search-product-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Select Product From the list" classname="addToCartUsingFixture.test.ts" time="21.79">
+<failure message="addToCartUsingFixture.test.ts:68:7 Select Product From the list" type="FAILURE">
+<![CDATA[  [chromium] › addToCartUsingFixture.test.ts:68:7 › Select Product From the list ───────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('xpath=//div[@class=\'bar-notification success\']//p[1]') to be visible
+    ============================================================
+
+       at ..\pages\electronicsPage.ts:26
+
+      24 |
+      25 |     async verifyAddToCartSuccessMessage(){
+    > 26 |      const successMessage =  (await this.page.waitForSelector("//div[@class='bar-notification success']//p[1]", {timeout: 10000})).textContent();
+         |                                               ^
+      27 |     //  const successMessage =  this.page.innerText("//div[@class='bar-notification success']//p[1]");
+      28 |      return successMessage;
+      29 |     }
+
+        at ElectronicPage.verifyAddToCartSuccessMessage (C:\Users\BS1113\Desktop\playwright-cucumber-typescript\playwright-cucumber-typescript\pages\electronicsPage.ts:26:47)
+        at C:\Users\BS1113\Desktop\playwright-cucumber-typescript\playwright-cucumber-typescript\pomTest\addToCartUsingFixture.test.ts:79:28
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\addToCartUsingFixture-Select-Product-From-the-list-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\addToCartUsingFixture-Select-Product-From-the-list-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\addToCartUsingFixture-Select-Product-From-the-list-chromium\video.webm]]
+
+[[ATTACHMENT|..\test-results\addToCartUsingFixture-Select-Product-From-the-list-chromium\test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

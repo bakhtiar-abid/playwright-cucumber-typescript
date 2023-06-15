@@ -108,8 +108,8 @@
     "@playwright/test": "^1.34.2"
   },
   "scripts": {
-    "test": "playwright test",
-    "test:local": "playwright test && node .github/workflows/send-teams-notification.js"
+    "test": "playwright test"
+    
   },
   "repository": {
     "type": "git",
@@ -123,3 +123,5 @@
   },
   "homepage": "https://github.com/bakhtiar-abid/playwright-cucumber-typescript#readme"
 }
+
+
