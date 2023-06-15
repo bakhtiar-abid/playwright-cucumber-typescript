@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright.config.ts",
-    "rootDir": "C:/Users/BS1113/Downloads/Compressed/playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71/playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71/pomTest",
+    "configFile": "/home/jbordhen/abid/playwright-cucumber-typescript/playwright.config.ts",
+    "rootDir": "/home/jbordhen/abid/playwright-cucumber-typescript/pomTest",
     "forbidOnly": false,
     "fullyParallel": true,
     "globalSetup": null,
@@ -27,12 +27,12 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "C:/Users/BS1113/Downloads/Compressed/playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71/playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71/test-results",
+        "outputDir": "/home/jbordhen/abid/playwright-cucumber-typescript/test-results",
         "repeatEach": 1,
         "retries": 0,
         "id": "chromium",
         "name": "chromium",
-        "testDir": "C:/Users/BS1113/Downloads/Compressed/playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71/playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71/pomTest",
+        "testDir": "/home/jbordhen/abid/playwright-cucumber-typescript/pomTest",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -57,12 +57,12 @@
         {
           "title": "",
           "file": "addToCartUsingFixture.test.ts",
-          "line": 15,
+          "line": 13,
           "column": 6,
           "specs": [
             {
               "title": "Register test_01",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -74,33 +74,51 @@
                   "results": [
                     {
                       "workerIndex": 0,
-                      "status": "passed",
-                      "duration": 5029,
-                      "errors": [],
+                      "status": "timedOut",
+                      "duration": 29999,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/home/jbordhen/abid/playwright-cucumber-typescript/pages/registerPage.ts",
+                            "column": 35,
+                            "line": 38
+                          },
+                          "message": "Error: page.textContent: Target closed\n=========================== logs ===========================\nwaiting for locator('xpath=//div[@class=\\'result\\']')\n============================================================\n\n\u001b[90m   at \u001b[39m../pages/registerPage.ts:38\n\n\u001b[0m \u001b[90m 36 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 37 |\u001b[39m     \u001b[36masync\u001b[39m successMessage(){\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m      \u001b[36mconst\u001b[39m mssg \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mtextContent(\u001b[32m\"//div[@class='result']\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 39 |\u001b[39m      \u001b[36mreturn\u001b[39m mssg\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 40 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 41 |\u001b[39m }\u001b[0m\n\n\u001b[2m    at RegisterPage.successMessage (/home/jbordhen/abid/playwright-cucumber-typescript/pages/registerPage.ts:38:35)\u001b[22m\n\u001b[2m    at /home/jbordhen/abid/playwright-cucumber-typescript/pomTest/addToCartUsingFixture.test.ts:27:52\u001b[22m"
+                        },
+                        {
+                          "message": "Pending operations:\n  - page.textContent at pages/registerPage.ts:38:35\n"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2023-05-30T17:02:12.509Z",
+                      "startTime": "2023-06-14T16:52:46.873Z",
                       "attachments": [
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Register-test-01-chromium\\video.webm"
+                          "path": "/home/jbordhen/abid/playwright-cucumber-typescript/test-results/addToCartUsingFixture-Register-test-01-chromium/video.webm"
                         },
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Register-test-01-chromium\\test-finished-1.png"
+                          "path": "/home/jbordhen/abid/playwright-cucumber-typescript/test-results/addToCartUsingFixture-Register-test-01-chromium/test-failed-1.png"
                         }
                       ]
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "23a4a57a8f3b3565b855-f858b06ffb75fa8ffb91",
               "file": "addToCartUsingFixture.test.ts",
-              "line": 16,
+              "line": 14,
               "column": 7
             },
             {
@@ -118,22 +136,22 @@
                     {
                       "workerIndex": 1,
                       "status": "passed",
-                      "duration": 4215,
+                      "duration": 3541,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2023-05-30T17:02:12.540Z",
+                      "startTime": "2023-06-14T16:52:46.870Z",
                       "attachments": [
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Login-test-01-chromium\\video.webm"
+                          "path": "/home/jbordhen/abid/playwright-cucumber-typescript/test-results/addToCartUsingFixture-Login-test-01-chromium/video.webm"
                         },
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Login-test-01-chromium\\test-finished-1.png"
+                          "path": "/home/jbordhen/abid/playwright-cucumber-typescript/test-results/addToCartUsingFixture-Login-test-01-chromium/test-finished-1.png"
                         }
                       ]
                     }
@@ -143,7 +161,7 @@
               ],
               "id": "23a4a57a8f3b3565b855-d885d81944647145b92b",
               "file": "addToCartUsingFixture.test.ts",
-              "line": 36,
+              "line": 39,
               "column": 7
             },
             {
@@ -161,22 +179,22 @@
                     {
                       "workerIndex": 2,
                       "status": "passed",
-                      "duration": 5294,
+                      "duration": 3872,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2023-05-30T17:02:12.545Z",
+                      "startTime": "2023-06-14T16:52:46.874Z",
                       "attachments": [
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Go-to-Electronic-Page-to-search-product-chromium\\video.webm"
+                          "path": "/home/jbordhen/abid/playwright-cucumber-typescript/test-results/addToCartUsingFixture-Go-to-Electronic-Page-to-search-product-chromium/video.webm"
                         },
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Go-to-Electronic-Page-to-search-product-chromium\\test-finished-1.png"
+                          "path": "/home/jbordhen/abid/playwright-cucumber-typescript/test-results/addToCartUsingFixture-Go-to-Electronic-Page-to-search-product-chromium/test-finished-1.png"
                         }
                       ]
                     }
@@ -186,12 +204,12 @@
               ],
               "id": "23a4a57a8f3b3565b855-4ecb72d466f6e5ba1a44",
               "file": "addToCartUsingFixture.test.ts",
-              "line": 45,
+              "line": 48,
               "column": 7
             },
             {
               "title": "Select Product From the list",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -203,33 +221,57 @@
                   "results": [
                     {
                       "workerIndex": 3,
-                      "status": "passed",
-                      "duration": 7908,
-                      "errors": [],
+                      "status": "failed",
+                      "duration": 15522,
+                      "error": {
+                        "message": "page.waitForSelector: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('xpath=//div[@class=\\'bar-notification success\\']//p[1]') to be visible\n============================================================",
+                        "stack": "TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('xpath=//div[@class=\\'bar-notification success\\']//p[1]') to be visible\n============================================================\n    at ElectronicPage.verifyAddToCartSuccessMessage (/home/jbordhen/abid/playwright-cucumber-typescript/pages/electronicsPage.ts:26:47)\n    at /home/jbordhen/abid/playwright-cucumber-typescript/pomTest/addToCartUsingFixture.test.ts:79:28",
+                        "location": {
+                          "file": "/home/jbordhen/abid/playwright-cucumber-typescript/pages/electronicsPage.ts",
+                          "column": 47,
+                          "line": 26
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../pages/electronicsPage.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36masync\u001b[39m verifyAddToCartSuccessMessage(){\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m      \u001b[36mconst\u001b[39m successMessage \u001b[33m=\u001b[39m  (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m\"//div[@class='bar-notification success']//p[1]\"\u001b[39m\u001b[33m,\u001b[39m {timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m}))\u001b[33m.\u001b[39mtextContent()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[90m//  const successMessage =  this.page.innerText(\"//div[@class='bar-notification success']//p[1]\");\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 |\u001b[39m      \u001b[36mreturn\u001b[39m successMessage\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 29 |\u001b[39m     }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/jbordhen/abid/playwright-cucumber-typescript/pages/electronicsPage.ts",
+                            "column": 47,
+                            "line": 26
+                          },
+                          "message": "TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('xpath=//div[@class=\\'bar-notification success\\']//p[1]') to be visible\n============================================================\n\n\u001b[90m   at \u001b[39m../pages/electronicsPage.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36masync\u001b[39m verifyAddToCartSuccessMessage(){\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m      \u001b[36mconst\u001b[39m successMessage \u001b[33m=\u001b[39m  (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m\"//div[@class='bar-notification success']//p[1]\"\u001b[39m\u001b[33m,\u001b[39m {timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m}))\u001b[33m.\u001b[39mtextContent()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[90m//  const successMessage =  this.page.innerText(\"//div[@class='bar-notification success']//p[1]\");\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 |\u001b[39m      \u001b[36mreturn\u001b[39m successMessage\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 29 |\u001b[39m     }\u001b[0m\n\n\u001b[2m    at ElectronicPage.verifyAddToCartSuccessMessage (/home/jbordhen/abid/playwright-cucumber-typescript/pages/electronicsPage.ts:26:47)\u001b[22m\n\u001b[2m    at /home/jbordhen/abid/playwright-cucumber-typescript/pomTest/addToCartUsingFixture.test.ts:79:28\u001b[22m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2023-05-30T17:02:12.542Z",
+                      "startTime": "2023-06-14T16:52:46.883Z",
                       "attachments": [
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Select-Product-From-the-list-chromium\\video.webm"
+                          "path": "/home/jbordhen/abid/playwright-cucumber-typescript/test-results/addToCartUsingFixture-Select-Product-From-the-list-chromium/video.webm"
                         },
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\BS1113\\Downloads\\Compressed\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\playwright-cucumber-typescript-60c5ec1a3585cdc290ef946676ef04a4352ace71\\test-results\\addToCartUsingFixture-Select-Product-From-the-list-chromium\\test-finished-1.png"
+                          "path": "/home/jbordhen/abid/playwright-cucumber-typescript/test-results/addToCartUsingFixture-Select-Product-From-the-list-chromium/test-failed-1.png"
                         }
-                      ]
+                      ],
+                      "errorLocation": {
+                        "file": "/home/jbordhen/abid/playwright-cucumber-typescript/pages/electronicsPage.ts",
+                        "column": 47,
+                        "line": 26
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "23a4a57a8f3b3565b855-89ca4cdf91363b249a3e",
               "file": "addToCartUsingFixture.test.ts",
-              "line": 59,
+              "line": 68,
               "column": 7
             }
           ]

@@ -1,63 +1,84 @@
-const axios = require('axios');
+const axios = require('axios')
 
-const webhookUrl = "https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130";
+const webhookUrl =
+  'https://brainstationo365.webhook.office.com/webhookb2/8057d271-7315-4cf8-bbc9-da07ef13bb7b@a1e21495-2087-4312-a718-7f84ad109439/IncomingWebhook/9be71384f7774125b9194d8d7cf9cd99/fad27405-4c18-4692-8d4b-a92e0cb2c130'
 
 async function sendTeamsNotification() {
-  const testResults = require('../../test-results.json'); // Adjust the path to your actual test results file
+  const testResults = require('../../test-results.json') // Adjust the path to your actual test results file
 
   // const passedTests = testResults.passed;
   // const failedTests = testResults.failed;
 
-  var testSuites;
+  var result = testResults.suites?.reduce((res, cur, index) => {
+    res += cur.specs.map((spec) => {
+      var testPassed,
+        testFailed = spec.tests.reduce(
+          (acc, test) => {
+            if (test.results.every((result) => result.status === 'passed')) {
+              acc.testPassed += 1
+            } else {
+              acc.testFailed += 1
+            }
+            return acc
+          },
+          { testPassed: 0, testFailed: 0 }
+        )
+      var message = `Suites: ${index} \n title: ${spec.title} \n tests passed: ${testPassed}, tests failed: ${testFailed} \n\n`
+      return message
+    }, '')
+  })
 
-  var testTitle;
+  var testSuites
 
-  var testAllSpec;
+  var testTitle
 
-  var testStatus;
+  var testAllSpec
 
-  var tests;
+  var testStatus
 
-  var results;
+  var tests
 
-  testSuites = testResults?.suites?.map((suit)=>suit.suites);
+  var results
 
-  testTitle = testSuites?.map((spec)=>spec.specs);
+  testSuites = testResults?.suites?.map((suit) => suit.suites)
 
- testAllSpec = testTitle?.map((allSpec)=>allSpec.title);
+  testTitle = testSuites?.map((spec) => spec.specs)
 
- tests = testAllSpec?.tests?.map((test)=>test);
+  testAllSpec = testTitle?.map((allSpec) => allSpec.title)
 
-results = tests?.results?.map((stat)=>stat);
+  tests = testAllSpec?.tests?.map((test) => test)
 
-testStatus = results?.status;
+  results = tests?.results?.map((stat) => stat)
 
-// testResult = resultss.map((stat)=>stat.status);
-// const status = testSuite.map((expRes)=>expRes.expectedStatus);
+  testStatus = results?.status
+
+  // testResult = resultss.map((stat)=>stat.status);
+  // const status = testSuite.map((expRes)=>expRes.expectedStatus);
   const message = `
     Test Results:
     - TestTitle: ${testAllSpec}
 
-    
-  `;
+    ${result}
+  `
+
+  console.log(result)
 
   try {
     await axios.post(webhookUrl, {
       text: message,
-    });
-    console.log('Notification sent to Microsoft Teams successfully.');
+    })
+    console.log('Notification sent to Microsoft Teams successfully.')
   } catch (error) {
-    console.error('Error sending notification to Microsoft Teams:', error);
+    console.error('Error sending notification to Microsoft Teams:', error)
   }
 }
 
-sendTeamsNotification();
+sendTeamsNotification()
 
 // Failed Tests:
-    // ${testNames.join('\n')}
+// ${testNames.join('\n')}
 
-    // - Skipped: ${testStatus === "skipped" ? testStatus : ""}
+// - Skipped: ${testStatus === "skipped" ? testStatus : ""}
 
-
-    // - Passed: ${testAllSpec === "passed" ? testAllSpec : ""}
-    // - Failed: ${testAllSpec === "failed" ? testStatus : ""}
+// - Passed: ${testAllSpec === "passed" ? testAllSpec : ""}
+// - Failed: ${testAllSpec === "failed" ? testStatus : ""}
